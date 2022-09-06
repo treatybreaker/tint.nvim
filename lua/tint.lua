@@ -254,7 +254,9 @@ local function on_or_after_vimenter(func)
     func()
   else
     vim.api.nvim_create_autocmd({ "VimEnter" }, {
-      callback = func,
+      callback = function()
+        func()
+      end,
       once = true,
     })
   end
